@@ -1,0 +1,12 @@
+@function R($rem) {
+    @return $rem / 750 * 3.2 * 1rem;
+}
+html, body{
+	height: R(1234);
+}
+body{
+	font-size: 10px;
+}
+.app{
+	height: R(1234);
+}

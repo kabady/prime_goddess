@@ -1,0 +1,47 @@
+@function R($rem) {
+    @return $rem / 750 * 3.2 * 1rem;
+}
+.home{
+	.slogan{
+		margin: R(127) auto 0;
+		width: R(687);
+		height: R(541);
+		display: block;
+		img{
+			width: 100%;
+			height: 100%;
+			display: block;
+		}
+	}
+	.action{
+		margin-top: R(830 - 541 - 127);
+		width: 100%;
+		text-align: center;
+		.score-btn{
+			display: inline-block;
+			vertical-align: top;
+
+			margin: 0 R(20) R(40);
+			width: R(600);
+			height: R(100);
+			background: url(./images/score.png);
+			background-size: 100% 100%;
+		}
+		.rank-btn, .upload-btn{
+			display: inline-block;
+			vertical-align: top;
+
+			margin: 0 R(20) R(40);
+			width: R(280);
+			height: R(100);
+			
+			background-size: 100% 100%;
+		}
+		.rank-btn{
+			background-image: url(./images/rank.png);
+		}
+		.upload-btn{
+			background-image: url(./images/upload.png);
+		}
+	}
+}
