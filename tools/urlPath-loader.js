@@ -84,9 +84,7 @@ module.exports = function(content) {
 	if (query.emitFile === undefined || query.emitFile) {
 		this.emitFile(outputPath, content);
 	}
-
 	return "var path = require('"+ToolsContainer.getDependencies('Path')+"');module.exports = path.resolve(" + JSON.stringify(url) + ");";
-	return "var path = require('./tools/Path');module.exports = " + publicPath + ";";
 };
 
 module.exports.raw = true;

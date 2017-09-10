@@ -1,0 +1,95 @@
+@function R($rem) {
+    @return $rem / 750 * 3.2 * 1rem;
+}
+.share{
+	.picture{
+		position: relative;
+		img{
+			width: R(750);
+			height: R(940);
+			display: block;
+			background-color: #fff;
+		}
+		.sorce{
+			position: absolute;
+			top: R(40);
+			left: R(34);
+			font-size: 0;
+			span{
+				font-size: R(40);
+				color: #9450e7;
+				line-height: 1;
+			}
+			.g{
+				font-size: R(100);
+				line-height: 1;
+			}
+		}
+		.rank-num{
+			position: absolute;
+			right: R(35);
+			top: R(24);
+			padding-top: R(40);
+			.crown{
+				position: absolute;
+				top: 0;
+				right: 0;
+				display: block;
+				width: R(49);
+				height: R(40);
+				background-image: url(./images/crown.png);
+				background-size: 100% 100%;
+			}
+			p{
+				color: #9450e7;
+				font-size: R(30);
+				line-height: 1.15;
+				text-align: right;
+			}
+			.num{
+
+			}
+		}
+		.info{
+			position: absolute;
+			bottom: 0;
+			background-color: rgba(#9450e7, .6);
+			width: 100%;
+			padding: R(25) 0;
+			.name{
+				margin: 0 auto;
+				font-size: R(36);
+				width: R(690);
+				color: #fff;
+				line-height: 1.5;
+
+				word-wrap: normal;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				overflow: hidden;
+			}
+			.detail{
+				margin: 0 auto;
+				font-size: R(22);
+				width: R(690);
+				color: #fff;
+				line-height: 1.5;
+				height: R(22 * 1.5 * 2);
+
+				overflow: hidden;
+				word-break: break-all;
+				word-wrap: break-word;
+			}
+		}
+	}
+	.action{
+		.more-prime-goddess{
+			margin: R(80) auto 0;
+			display: block;
+			width: R(600);
+			height: R(100);
+			background-image: url(./images/more_prime_goddess.png);
+			background-size: 100% 100%;
+		}
+	}
+}

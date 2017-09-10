@@ -1,0 +1,228 @@
+@function R($rem) {
+    @return $rem / 750 * 3.2 * 1rem;
+}
+.rank{
+	font-size: 0;
+	.rank-list{
+		margin-top: R(75);
+		position: relative;
+		display: inline-block;
+		width: 100%;
+		text-align: center;
+		padding-top: R(404 - 75);
+		.rank-item{
+			width: R(130);
+			position: relative;
+			display: inline-block;
+			margin: 0 R(20);
+			.picture{
+				box-sizing: border-box;
+				width: 100%;
+				padding-top: 100%;
+				border-radius: 1000px;
+				background: #ffd154;
+				border: 2px solid #ffd154;
+				position: relative;
+				img{
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					display: block;
+					background: #fff;
+					border-radius: 1000px;
+				}
+				&:before{
+					position: absolute;
+					z-index: 1;
+				}
+			}
+			.info{
+				.score{
+					margin-top: R(10);
+					font-size: 0;
+					text-align: center;
+					padding-left: R(10);
+					line-height: 1.3;
+					span{
+						font-size: R(22);
+						color: #ffd155;
+						font-weight: bold;
+					}
+					.g{
+						font-size: R(32);
+					}
+				}
+				.name{
+					font-size: R(24);
+					color: #fff;
+					line-height: 1.3;
+					text-align: center;
+
+					word-break: break-all;
+					word-wrap: break-word;
+					height: R(40);
+				}
+			}
+		}
+		.rank-1, .rank-2, .rank-3{
+			margin: 0;
+			.picture{
+				position: relative;
+				&:before{
+					content: '';
+					display: block;
+					position: absolute;
+					
+					width: R(61);
+					height: R(55);
+				}
+			}
+		}
+		.rank-2{
+			position: absolute;
+			top: 0;
+			left: R(45);
+			width: R(180);
+			margin-top: R(220 - 180);
+			.picture{
+				&:before{
+					top: R(-36);
+					left: R(0);
+					background-image: url(./images/2.png);
+					background-size: 100% 100%;
+				}
+			}
+		}
+		.rank-3{
+			position: absolute;
+			top: 0;
+			right: R(45);
+			width: R(180);
+			margin-top: R(220 - 180);
+			.picture{
+				&:before{
+					top: R(-36);
+					left: R(0);
+					background-image: url(./images/3.png);
+					background-size: 100% 100%;
+				}
+			}
+		}
+		.rank-1{
+			width: R(220);
+			position: absolute;
+			top: 0;
+			left: 50%;
+			transform: translate(-50%, 0);
+
+			border-radius: 1000px;
+			
+			.picture{
+				&:before{
+					top: R(-34);
+					left: R(13);
+					background-image: url(./images/1.png);
+					background-size: 100% 100%;
+				}
+			}
+		}
+		.rank-4, .rank-5, .rank-6{
+			padding-top: R(32);
+			display: inline-block;
+			vertical-align: top;
+			width: R(160);
+			margin: 0 R(40);
+			height: R(300 - 32);
+			.picture{
+				border-radius: 4px 50% 50% 50%;
+
+				&:before{
+					top: -2px;
+					left: 0;
+					color: #9450e7;
+					font-size: R(20);
+					width: R(20);
+					line-height: 1.6;
+					text-align: center;
+				}
+			}
+		}
+		.rank-4 .picture:before{
+			content: '4';
+		}
+		.rank-5 .picture:before{
+			content: '5';
+		}
+		.rank-6 .picture:before{
+			content: '6';
+		}
+		.rank-7, .rank-8, .rank-9, .rank-10{
+			padding-top: R(32);
+			display: inline-block;
+			vertical-align: top;
+			height: R(283 - 32);
+			.picture{
+				border-radius: 4px 50% 50% 50%;
+
+				&:before{
+					top: -2px;
+					left: 0;
+					color: #9450e7;
+					font-size: R(20);
+					width: R(20);
+					line-height: 1.15;
+					text-align: center;
+				}
+			}
+		}
+		.rank-7 .picture:before{
+			content: '7';
+		}
+		.rank-8 .picture:before{
+			content: '8';
+		}
+		.rank-9 .picture:before{
+			content: '9';
+		}
+		.rank-10 .picture:before{
+			content: '10';
+		}
+	}
+	.action{
+		.backhome-btn{
+			display: block;
+			margin: 0 auto;
+			width: R(654);
+			height: R(107);
+			background-image: url(./images/backhome.png);
+			background-size: 100% 100%;
+			.click-area{
+				width: R(640);
+				height: R(90);
+				display: block;
+				margin: 0 auto;
+			}
+		}
+	}
+	.longzhu-ad{
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		img{
+			width: 100%;
+			height: 100%;
+			display: block;
+		}
+		.close-ad{
+			position: absolute;
+			right: R(10);
+			bottom: R(70);
+
+			width: R(30);
+			height: R(30);
+		}
+	}
+}

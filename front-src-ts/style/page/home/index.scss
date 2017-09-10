@@ -43,5 +43,12 @@
 		.upload-btn{
 			background-image: url(./images/upload.png);
 		}
+		.rule-btn{
+			padding: 0 R(20);
+			line-height: 1.5;
+			min-width: R(200);
+			display: inline-block;
+			vertical-align: top;
+		}
 	}
 }

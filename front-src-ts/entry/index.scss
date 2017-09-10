@@ -1,12 +1,18 @@
 @function R($rem) {
     @return $rem / 750 * 3.2 * 1rem;
 }
+// 背景图片在原设计稿上修改了尺寸的
+// 微信标题上移30px，背景图片高度取1234px
+// 但是在微信上显示，底部会显示一个白条，修复此bug，在代码上只显示1230px
 html, body{
-	height: R(1234);
+	height: R(1230);
 }
 body{
 	font-size: 10px;
 }
 .app{
-	height: R(1234);
+	height: R(1230);
+}
+.pointer-events-none{
+	pointer-events: none;
 }

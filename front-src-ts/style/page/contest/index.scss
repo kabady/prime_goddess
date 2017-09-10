@@ -1,0 +1,203 @@
+@function R($rem) {
+    @return $rem / 750 * 3.2 * 1rem;
+}
+.contest{
+	.picture{
+		position: relative;
+		img{
+			width: R(750);
+			height: R(940);
+			display: block;
+			background-color: #fff;
+		}
+		.sorce{
+			position: absolute;
+			top: R(40);
+			left: R(34);
+			font-size: 0;
+			span{
+				font-size: R(40);
+				color: #9450e7;
+				line-height: 1;
+			}
+			.g{
+				font-size: R(100);
+				line-height: 1;
+			}
+		}
+		.rank-num{
+			position: absolute;
+			right: R(35);
+			top: R(24);
+			padding-top: R(40);
+			.crown{
+				position: absolute;
+				top: 0;
+				right: 0;
+				display: block;
+				width: R(49);
+				height: R(40);
+				background-image: url(./images/crown.png);
+				background-size: 100% 100%;
+			}
+			p{
+				color: #9450e7;
+				font-size: R(30);
+				line-height: 1.15;
+				text-align: right;
+			}
+			.num{
+
+			}
+		}
+		.info{
+			position: absolute;
+			bottom: 0;
+			background-color: rgba(#9450e7, .6);
+			width: 100%;
+			padding: R(25) 0;
+			.name{
+				margin: 0 auto;
+				font-size: R(36);
+				width: R(690);
+				color: #fff;
+				line-height: 1.5;
+
+				word-wrap: normal;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				overflow: hidden;
+			}
+			.detail{
+				margin: 0 auto;
+				font-size: R(22);
+				width: R(690);
+				color: #fff;
+				line-height: 1.5;
+				height: R(22 * 1.5 * 2);
+
+				overflow: hidden;
+				word-break: break-all;
+				word-wrap: break-word;
+			}
+		}
+	}
+	.score-tool{
+		display: block;
+		width: R((49.3 + 18) * 11);
+		height: R(59);
+		margin: 0 auto;
+		position: relative;
+		padding-top: R(54);
+		padding-bottom: R(20);
+		.bg{
+			margin: 0 auto;
+			display: block;
+			width: R(690);
+			height: 100%;			
+			background-image: url(./images/score-bg.png);
+			background-size: 100% 100%;
+		}
+		.score-list {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			font-size: 0;
+			white-space: nowrap;
+			.score-item{
+				display: inline-block;
+				vertical-align: top;
+				width: R(49.3 + 18);
+				height: 100%;
+				
+				position: relative;
+				&:before{
+					content: '';
+					position: absolute;
+					width: 100%;
+					
+					height: R(4);
+					top: R(62);
+				}
+				&:first-child:before{
+					width: 50%;
+					right: 0;
+				}
+				&:last-child:before{
+					width: 50%;
+					left: 0;
+				}
+				&:after{
+					display: none;
+					content: '';
+					width: R(14);
+					height: R(14);
+					background-image: url(./images/score-over.png);
+					background-size: 100% 100%;
+					position: absolute;
+					top: R(57);
+					left: 50%;
+					transform: translate(-50%, 0);
+				}
+			}
+		}
+
+		@for $i from 0 through 10 {
+			.score-list[equal-index=_#{$i}]{
+				@for $j from 0 through $i + 1 {
+					.score-item[score-index=_#{$j}]{
+						&:before{
+							background-color: #ffa9e1;
+						}
+						&:after{
+							display: block;
+						}
+					}
+				}
+				.score-item[score-index=_#{$i + 1}]{
+					&:before{
+						width: 50%;
+					}
+					&:after{
+						width: R(50);
+						height: R(50);
+						background-image: url(./images/score-cur.png);
+						top: R(40);
+					}
+				}
+			}
+		}
+		
+	}
+	.action{
+		.slogan{
+			margin: 0 auto;
+			display: block;
+			width: R(158);
+			height: R(125);
+		}
+		position: relative;
+		.backhome-btn{
+			position: absolute;
+			top: 50%;
+			left: R(30);
+			transform: translate(0, -50%);
+			width: R(139);
+			height: R(64);
+			background-image: url(./images/backhome.png);
+			background-size: 100% 100%;
+		}
+		.next-prime-goddess-btn{
+			position: absolute;
+			top: 50%;
+			right: R(30);
+			transform: translate(0, -50%);
+			width: R(88);
+			height: R(64);
+			background-image: url(./images/next_prime_goddess.png);
+			background-size: 100% 100%;
+		}
+	}
+}

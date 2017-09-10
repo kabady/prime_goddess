@@ -1,0 +1,49 @@
+@function R($rem) {
+    @return $rem / 750 * 3.2 * 1rem;
+}
+.rule{
+	.slogan{
+		margin: R(74) auto 0;
+		width: R(263);
+		height: R(208);
+		display: block;
+		img{
+			width: 100%;
+			height: 100%;
+			display: block;
+		}
+	}
+	h3{
+		margin-top: R(40);
+		font-size: R(36);
+		line-height: 1.5;
+		color: #ffd35c;
+		text-align: center;
+	}
+	.v-swiper-container{
+		margin: R(40) auto 0;
+		height: R(600);
+		width: R(620);
+		overflow: hidden;
+		p{
+			font-size: R(24);
+			line-height: 2;
+			margin: 0 auto;
+			color: #fff;
+		}
+	}
+	.action{
+		margin-top: R(80);
+		width: 100%;
+		text-align: center;
+		.backhome-btn{
+			display: block;
+
+			margin: 0 auto R(40);
+			width: R(360);
+			height: R(90);
+			background: url(./images/backhome.png);
+			background-size: 100% 100%;
+		}
+	}
+}
