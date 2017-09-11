@@ -13,6 +13,7 @@ import RulePage from '../style/page/rule/index.ts';
 import RankPage from '../style/page/rank/index.ts';
 import ContestPage from '../style/page/contest/index.ts';
 import uploadPage from '../style/page/upload/index.ts';
+import uploadUserPage from '../style/page/uploadUser/index.ts';
 
 export class APP {
 	DOMAPI: any = $('.app .app-wrapper');
@@ -36,6 +37,9 @@ export class APP {
 		// 上传图片页
 		this.page.upload = new uploadPage(this);
 		this.DOMAPI.append( this.page.upload.domElem.getElemList() )
+		// 上传图片用户页
+		this.page.uploadUser = new uploadUserPage(this);
+		this.DOMAPI.append( this.page.uploadUser.domElem.getElemList() )
 	}
 	start(){
 		

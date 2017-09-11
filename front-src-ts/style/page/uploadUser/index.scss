@@ -1,0 +1,79 @@
+@function R($rem) {
+    @return $rem / 750 * 3.2 * 1rem;
+}
+.upload-user{
+	background-color: #9450e7;
+	.picture{
+		position: relative;
+		width: 100%;
+		height: R(940);
+		overflow: hidden;
+		
+		.user-img{
+			width: R(750);
+			height: R(940);
+			display: block;
+			background-color: #fff;
+		}
+		.user-mask{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: R(750);
+			height: R(940);
+			display: block;
+			z-index: 1;
+			background-color: rgba(#9450e7, .6);
+			.icon-upload{
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				width: R(270);
+				height: R(190);
+				background-image: url(./images/icon_wait.png);
+				background-size: 100% 100%;
+			}
+		}
+	}
+	.info{
+		background-color: #a973ec;
+		height: R(185);
+		padding: 0 R(30);
+		.input-box{
+			height: R(94);
+			position: relative;
+			label{
+				position: absolute;
+				top: 0;
+				left: 0;
+				color: #fff;
+				font-size: R(26);
+				line-height: R(94);
+			}
+			.txt{
+				display: block;
+				width: 100%;
+				height: 100%;
+				background-color: transparent;
+				padding-left: R(26 * 3);
+				box-sizing: border-box;
+				font-size: R(30);
+				color: #fff;
+			}
+
+		}
+		.name.input-box{
+			border-bottom: 1px solid #9450e7;
+		}
+	}
+	.action{
+		.backhome-btn{
+			display: block;
+			background: #ffd35c url(./images/backhome.png) no-repeat center center;
+			background-size: R(143) R(35);
+			height: R(105);
+			width: 100%;
+		}
+	}
+}

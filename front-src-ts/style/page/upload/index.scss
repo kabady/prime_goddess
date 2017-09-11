@@ -7,6 +7,7 @@
 		position: relative;
 		width: 100%;
 		height: R(940);
+		overflow: hidden;
 		.icon-upload{
 			position: absolute;
 			top: 50%;
@@ -23,16 +24,115 @@
 				display: block;
 			}
 		}
-		.main-img{
+		.user-img{
 			width: R(750);
 			height: R(940);
 			display: block;
 			background-color: #fff;
 		}
+		.user-event{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: R(750);
+			height: R(940);
+			display: block;
+			z-index: 1;
+		}
+		&.waiting-load{
+			.user-img, .user-event{
+				display: none;
+			}
+		}
+		&.operating-img{
+			.icon-upload{
+				display: none;
+			}
+		}
 	}
 	.info{
 		background-color: #a973ec;
 		height: R(185);
+		padding: 0 R(30);
+		.input-box{
+			height: R(94);
+			position: relative;
+			label{
+				position: absolute;
+				top: 0;
+				left: 0;
+				color: #fff;
+				font-size: R(26);
+				line-height: R(94);
+			}
+			.txt{
+				display: block;
+				width: 100%;
+				height: 100%;
+				background-color: transparent;
+				padding-left: R(26 * 3);
+				box-sizing: border-box;
+				font-size: R(30);
+				color: #fff;
+			}
+
+		}
+		.name.input-box{
+			border-bottom: 1px solid #9450e7;
+			.txt{
+				padding-right: R(60);
+			}
+			.prompt{
+				display: block;
+				position: absolute;
+				top: 0;
+				right: 0;
+				height: 100%;
+				.prompt-box{
+					width: R(40);
+					height: R(40);
+					display: block;
+					position: relative;
+					background-image: url(./images/prompt_btn.png);
+					background-size: 100% 100%;
+					position: relative;
+					top: 50%;
+					transform: translate(0, -50%);
+					.prompt-float-box{
+						position: absolute;
+						z-index: 10;
+						bottom: 120%;
+						right: R(-16);
+						width: R(170);
+						height: R(70);
+						font-size: R(24);
+						color: #792dc8;
+						line-height: R(60);
+						text-align: center;
+						background-image: url(./images/prompt_float.png);
+						background-size: 100% 100%;
+						transform-origin: R(140) bottom;
+						display: none;
+						&.show{
+							animation: prompt-txt-box-show .5s forwards;
+							display: block;
+							@keyframes prompt-txt-box-show{
+								0% { transform: scale(0); }
+								100% { transform: scale(1); }
+							}
+						}
+						&.hide{
+							animation: prompt-txt-box-hide .5s forwards;
+							display: block;
+							@keyframes prompt-txt-box-hide{
+								0% { transform: scale(1); }
+								100% { transform: scale(0); }
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 	.action{
 		.sure-btn{
