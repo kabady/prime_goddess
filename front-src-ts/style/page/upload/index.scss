@@ -23,6 +23,17 @@
 				opacity: 0;
 				display: block;
 			}
+			span{
+				position: absolute;
+				top: 100%;
+				left: 50%;
+				margin-top: 2px;
+				transform: translate(-50%, 0);
+				font-size: R(22);
+				line-height: 1.5;
+				color: #fff;
+				white-space: nowrap;
+			}
 		}
 		.user-img{
 			width: R(750);
@@ -135,12 +146,32 @@
 		}
 	}
 	.action{
+		width: 100%;
+		overflow: hidden;
+		.action-wrapper{
+			font-size: 0;
+			white-space: nowrap;
+			
+		    margin-left: -1px;
+		    transform: translate(-50%);
+		    position: relative;
+		    left: 50%;
+		}
+		.backhome-btn{
+			vertical-align: top;
+			display: inline-block;
+			background: #ffa9e1 url(./images/backhome.png) no-repeat center center;
+			background-size: R(143) R(35);
+			height: R(105);
+			width: 50%;
+			border-right: 1px solid #9450e7;
+		}
 		.sure-btn{
-			display: block;
+			display: inline-block;
 			background: #ffd35c url(./images/sure_btn.png) no-repeat center center;
 			background-size: R(143) R(35);
 			height: R(105);
-			width: 100%;
+			width: 50%;
 		}
 	}
 }

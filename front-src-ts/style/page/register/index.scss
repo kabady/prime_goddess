@@ -142,12 +142,24 @@
 	}
 	.action{
 		margin-top: R(80);
+		font-size: 0;
+		text-align: center;
 		.sure-btn{
-			width: R(600);
+			vertical-align: top;
+			width: R(370);
 			height: R(100);
-			display: block;
-			margin: 0 auto;
+			display: inline-block;
+			margin: 0 R(10);
 			background-image: url(./images/sure_btn.png);
+			background-size: 100% 100%;
+		}
+		.backhome-btn{
+			vertical-align: top;
+			width: R(210);
+			height: R(100);
+			margin: 0 R(10);
+			display: inline-block;
+			background-image: url(./images/backhome.png);
 			background-size: 100% 100%;
 		}
 	}

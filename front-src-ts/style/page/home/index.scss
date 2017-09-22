@@ -2,6 +2,18 @@
     @return $rem / 750 * 3.2 * 1rem;
 }
 .home{
+	.hupu-logo{
+		position: absolute;
+		top: R(40);
+		left: R(40);
+		
+		width: R(150);
+		img{
+			width: 100%;
+			height: 100%;
+			display: block;
+		}
+	}
 	.slogan{
 		margin: R(127) auto 0;
 		width: R(687);
@@ -26,6 +38,13 @@
 			height: R(100);
 			background: url(./images/score.png);
 			background-size: 100% 100%;
+
+			&.open{
+				background-image: url(./images/score_1.png);
+			}
+			&.close{
+				pointer-events: none;
+			}
 		}
 		.rank-btn, .upload-btn{
 			display: inline-block;
@@ -36,9 +55,16 @@
 			height: R(100);
 			
 			background-size: 100% 100%;
+
+			&.close{
+				pointer-events: none;
+			}
 		}
 		.rank-btn{
 			background-image: url(./images/rank.png);
+			&.open{
+				background-image: url(./images/rank_1.png);
+			}
 		}
 		.upload-btn{
 			background-image: url(./images/upload.png);

@@ -4,13 +4,13 @@
 .rank{
 	font-size: 0;
 	.rank-list{
-		margin-top: R(75);
+		margin-top: R(47);
 		position: relative;
 		display: inline-block;
 		width: 100%;
 		text-align: center;
-		padding-top: R(404 - 75);
-		min-height: R(580);
+		padding-top: R(375 - 47);
+		min-height: R(300 * 2 + 290);
 		.rank-item{
 			width: R(130);
 			position: relative;
@@ -24,12 +24,22 @@
 				background: #ffd154;
 				border: 2px solid #ffd154;
 				position: relative;
+				.over{
+					overflow: hidden;
+					position: absolute;
+					border-radius: 1000px;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					background-color: #fff;
+				}
 				img{
 					position: absolute;
 					top: 0;
 					left: 0;
 					width: 100%;
-					height: 100%;
+					// height: 100%;
 					display: block;
 					background: #fff;
 					border-radius: 1000px;
@@ -129,41 +139,38 @@
 				}
 			}
 		}
-		.rank-4, .rank-5, .rank-6{
-			padding-top: R(32);
-			display: inline-block;
-			vertical-align: top;
-			width: R(160);
-			margin: 0 R(40);
-			height: R(300 - 32);
-			.picture{
-				border-radius: 4px 50% 50% 50%;
+		// .rank-4, .rank-5, .rank-6{
+		// 	padding-top: R(32);
+		// 	display: inline-block;
+		// 	vertical-align: top;
+		// 	width: R(160);
+		// 	margin: 0 R(40);
+		// 	height: R(300 - 32);
+		// 	.picture{
+		// 		border-radius: 4px 50% 50% 50%;
 
-				&:before{
-					top: -2px;
-					left: 0;
-					color: #9450e7;
-					font-size: R(20);
-					width: R(20);
-					line-height: 1.6;
-					text-align: center;
-				}
+		// 		&:before{
+		// 			top: -2px;
+		// 			left: 0;
+		// 			color: #9450e7;
+		// 			font-size: R(20);
+		// 			width: R(20);
+		// 			line-height: 1.6;
+		// 			text-align: center;
+		// 		}
+		// 	}
+		// }
+		@for $i from 4 through 16 {
+			.rank-#{$i} .picture:before{
+				content: '#{$i}';
 			}
 		}
-		.rank-4 .picture:before{
-			content: '4';
-		}
-		.rank-5 .picture:before{
-			content: '5';
-		}
-		.rank-6 .picture:before{
-			content: '6';
-		}
-		.rank-7, .rank-8, .rank-9, .rank-10{
-			padding-top: R(32);
+
+		.rank-4, .rank-5, .rank-6, .rank-11, .rank-7, .rank-8, .rank-9, .rank-10{
+			padding-top: R(40);
 			display: inline-block;
 			vertical-align: top;
-			height: R(283 - 32);
+			height: R(300 - 40);
 			.picture{
 				border-radius: 4px 50% 50% 50%;
 
@@ -178,18 +185,28 @@
 				}
 			}
 		}
-		.rank-7 .picture:before{
-			content: '7';
+		.rank-12, .rank-13, .rank-14, .rank-15, .rank-16{
+			padding-top: R(35);
+			display: inline-block;
+			vertical-align: top;
+			width: R(110);
+			margin: 0 R(11);
+			height: R(290 - 32);
+			.picture{
+				border-radius: 4px 50% 50% 50%;
+
+				&:before{
+					top: -2px;
+					left: 0;
+					color: #9450e7;
+					font-size: R(16);
+					width: R(20);
+					line-height: 1.15;
+					text-align: center;
+				}
+			}
 		}
-		.rank-8 .picture:before{
-			content: '8';
-		}
-		.rank-9 .picture:before{
-			content: '9';
-		}
-		.rank-10 .picture:before{
-			content: '10';
-		}
+		
 	}
 	.action{
 		.backhome-btn{

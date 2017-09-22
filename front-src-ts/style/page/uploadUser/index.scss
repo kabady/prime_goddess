@@ -13,9 +13,9 @@
 			width: R(750);
 			height: R(940);
 			display: block;
-			background-color: #fff;
 		}
 		.user-mask{
+			display: none;
 			position: absolute;
 			top: 0;
 			left: 0;
@@ -33,6 +33,53 @@
 				height: R(190);
 				background-image: url(./images/icon_wait.png);
 				background-size: 100% 100%;
+			}
+		}
+		.activity-info{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			display: none;
+		}
+		.sorce{
+			position: absolute;
+			top: R(40);
+			left: R(34);
+			font-size: 0;
+			span{
+				font-size: R(40);
+				color: #9450e7;
+				line-height: 1;
+			}
+			.g{
+				font-size: R(100);
+				line-height: 1;
+			}
+		}
+		.rank-num{
+			position: absolute;
+			right: R(35);
+			top: R(36);
+			padding-top: R(40);
+			.crown{
+				position: absolute;
+				top: 0;
+				right: 0;
+				display: block;
+				width: R(49);
+				height: R(40);
+				background-image: url(./images/crown.png);
+				background-size: 100% 100%;
+			}
+			p{
+				color: #9450e7;
+				font-size: R(30);
+				line-height: 1.15;
+				text-align: right;
+			}
+			.num{
+
 			}
 		}
 	}
@@ -59,9 +106,14 @@
 				padding-left: R(26 * 3);
 				box-sizing: border-box;
 				font-size: R(30);
+				line-height: R(94);
 				color: #fff;
+				span{
+					overflow-x: scroll;
+					display: block;
+					white-space: nowrap;
+				}
 			}
-
 		}
 		.name.input-box{
 			border-bottom: 1px solid #9450e7;

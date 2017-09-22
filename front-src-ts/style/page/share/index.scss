@@ -12,7 +12,7 @@
 		}
 		.sorce{
 			position: absolute;
-			top: R(40);
+			top: R(36);
 			left: R(34);
 			font-size: 0;
 			span{
@@ -28,7 +28,7 @@
 		.rank-num{
 			position: absolute;
 			right: R(35);
-			top: R(24);
+			top: R(40);
 			padding-top: R(40);
 			.crown{
 				position: absolute;
@@ -74,7 +74,6 @@
 				width: R(690);
 				color: #fff;
 				line-height: 1.5;
-				height: R(22 * 1.5 * 2);
 
 				overflow: hidden;
 				word-break: break-all;

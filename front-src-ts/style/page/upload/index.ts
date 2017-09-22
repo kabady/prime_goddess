@@ -8,6 +8,11 @@ import { APP } from '../../../entry/main.ts';
 import ImgMove from '../../../other-component/build/ImgMove-0.0.1.js';
 import { ImageRotateFilter } from '../../../other-component/build/ImgKind.js';
 import CanvasImg from '../../../other-component/build/CanvasImg.js';
+import { ServiceRequestSignUp } from '../service/service.ts';
+
+import { loaderHide, loaderShow } from '../../tools/loader/index.ts';
+
+let _window: any = window;
 
 export default class ContestPage extends Page {
 	app: APP;
@@ -31,7 +36,7 @@ export default class ContestPage extends Page {
 		super(option);
 
 		this.app = app;
-		this.domElem.find('.picture').addClass('waiting-load')
+		this.domElem.find('.picture').addClass('waiting-load');
 	}
 	event(){
 		// #########
@@ -114,8 +119,28 @@ export default class ContestPage extends Page {
 
 				canvasImgRender.pushImgMove(this.userImgMove);
 				let imgsrc = canvasImgRender.render();
+
+				loaderShow();
+				ServiceRequestSignUp({
+					sid: _window.sid,
+					name: username,
+					intro: userdetail,
+					pic: imgsrc
+				}, (jsondata) => {
+					console.log(jsondata)
+					if (jsondata.code == 0) {
+						this.app.get('uploadUser').showWithAnimate();
+						this.hideWithAnimate();
+					}else if (jsondata.code == -1) {
+						this.app.get('register').showWithAnimate();
+						this.hideWithAnimate();
+					}else{
+						alert(jsondata.message);
+					}
+				}, () => {
+					loaderHide();
+				})
 				// $('body').append( $.render('<img style="position: absolute;left: 0;bottom: 0;width: 100%;" src="'+imgsrc+'">').getEl(0) )
-				
 			}
 		});
 	}

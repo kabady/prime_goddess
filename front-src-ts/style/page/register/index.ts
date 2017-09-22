@@ -3,7 +3,7 @@ let HTML = require( './index.html' );
 
 let $ = require( '../../../other-component/build/DomAPI-0.0.4.js' );
 import Page from '../../../other-component/build/Page-0.0.2.js'
-import { requestVCode, registerPost } from './service.ts';
+import { ServiceRequestVCode, ServiceRegisterPost, ServiceGetUserInfo } from '../service/service.ts';
 import { verificationPhone } from '../../../other-component/build/Verification-0.0.1.js';
 import { APP } from '../../../entry/main.ts';
 
@@ -12,6 +12,7 @@ export default class RegisterPage extends Page {
 	yzmBtnTxt: any;
 
 	phoneInputElem: any;
+	yzmInputElem: any;
 	yzmBtnElem: any;
 
 	suerBtnElem: any;
@@ -19,7 +20,7 @@ export default class RegisterPage extends Page {
 	promptTimeHide: any;
 	promptTimeInit: any;
 
-	app: APP
+	app: APP;
 	constructor(app: APP) {
 		let option = {
 			el: $.render(HTML).getEl(0),
@@ -33,18 +34,29 @@ export default class RegisterPage extends Page {
 		this.yzmBtnTxt = this.yzmBtnTxtElem.text();
 
 		this.phoneInputElem = this.domElem.find('.phone .txt');
+		this.yzmInputElem = this.domElem.find('.yzm .txt');
 
 		this.app = app;
 	}
 	Event(){
-		this.yzmBtnElem = this.domElem.find('.yzm .prompt-box')
+		this.yzmBtnElem = this.domElem.find('.yzm .prompt-box');
 		this.yzmBtnElem.on('click', (e) => {
 			$.pdsp(e);
 
-			if (verificationPhone(this.phoneInputElem.getEl(0).value)) {
+			var data_phone = this.phoneInputElem.getEl(0).value;
+			if (verificationPhone(data_phone)) {
 				this.yzmBtnElem.addClass('pointer-events-none')
-				requestVCode();
-				this.startVCodeCountDowm(1);
+				ServiceRequestVCode({
+					phone: data_phone
+				}, (jsondata) => {
+					if (jsondata.code == 0) {
+						this.startVCodeCountDowm(60);
+					}else{
+						alert(jsondata.message)
+					}
+				}, () => {
+					this.yzmBtnElem.removeClass('pointer-events-none');
+				});
 			}else{
 				this.showPhonePrompt();
 			}
@@ -55,15 +67,18 @@ export default class RegisterPage extends Page {
 			$.pdsp(e);
 
 			var phoneNumber = this.phoneInputElem.getEl(0).value;
-			var vCodeNumber = this.phoneInputElem.getEl(0).value;
+			var vCodeNumber = this.yzmInputElem.getEl(0).value;
 			this.suerBtnElem.addClass('pointer-events-none');
-			registerPost({
-				phoneNumber: phoneNumber,
-				vCodeNumber: vCodeNumber,
+			ServiceRegisterPost({
+				phone: phoneNumber,
+				authcode: vCodeNumber,
+			}, (jsondata) => {
+				if (jsondata.code == 0) {
+					this.whereMeGo(this.suerBtnElem);
+				}else{
+					alert(jsondata.message);
+				}
 			}, () => {
-				console.log('success')
-			}, () => {
-				console.log('complete')
 				this.suerBtnElem.removeClass('pointer-events-none');
 			}, () => {
 				alert('正在提交信息中....')
@@ -72,8 +87,14 @@ export default class RegisterPage extends Page {
 
 		this.domElem.find('.rule-btn').on('click', (e) => {
 			$.pdsp(e);
-			alert('rule-page')
+			this.app.get('rule').showWithAnimate();
+			this.hideWithAnimate();
 		})
+		this.domElem.find('.action .backhome-btn').on('click', (e) => {
+			$.pdsp(e);
+			this.app.get('home').showWithAnimate();
+			this.hideWithAnimate();
+		});
 	}
 	showPhonePrompt(){
 		clearTimeout(this.promptTimeHide);
@@ -88,7 +109,7 @@ export default class RegisterPage extends Page {
 			ElemAPI.removeClass('show').addClass('hide')
 		}, (ElemAnimationTime + ElemShowTime) * 1000);
 		this.promptTimeInit = setTimeout( () => {
-			ElemAPI.removeClass('hide').removeClass('show')
+			ElemAPI.removeClass('hide').removeClass('show');
 		}, (ElemAnimationTime + ElemShowTime + ElemAnimationTime) * 1000);
 	}
 	startVCodeCountDowm(times: number){
@@ -101,6 +122,23 @@ export default class RegisterPage extends Page {
 		setTimeout( () => {
 			this.startVCodeCountDowm(--times);
 		}, 1000)
+	}
+	whereMeGo(elem){
+		elem.addClass('pointer-events-none')
+		ServiceGetUserInfo((jsondata) => {
+			if (jsondata.code == -1) {
+				this.app.get('register').showWithAnimate();
+				this.hideWithAnimate();
+			}else if (jsondata.code == -2) {
+				this.app.get('upload').showWithAnimate();
+				this.hideWithAnimate();
+			}else if (jsondata.code == 0) {
+				this.app.get('uploadUser').showWithAnimate();
+				this.hideWithAnimate();
+			}
+		}, () => {
+			elem.removeClass('pointer-events-none')
+		});
 	}
 }
 

@@ -59,6 +59,7 @@ process.argv.forEach((argv) => {
         deploy();
     }
 })
+// deploy();
 function deploy() {
     if (private_config && private_config.SftpWebpackPlugin.open === true) {
         webpack_config.plugins.push(new SftpWebpackPlugin({
