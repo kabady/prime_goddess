@@ -3,7 +3,8 @@ try{
     private_config = './private_config/private.config.json'
     private_config = require(private_config);
 }catch(e){
-    console.log(e);
+    private_config = null;
+    // console.log(e);
 }
 
 var ToolsContainer = require('./tools.config.js');

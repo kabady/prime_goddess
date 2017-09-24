@@ -34,6 +34,8 @@ export default class ContestPage extends Page {
 				)
 			},
 			beforeshow: () => {
+				this.clearView();
+				this.clearSelect();
 				this.addGoddessItem(() => {
 					this.setGoddessView(0);
 				});
@@ -89,7 +91,7 @@ export default class ContestPage extends Page {
 		var data = this.firstGoddessItem && { ssid: this.firstGoddessItem.ssid }
 		ServiceRequestGoddess(data, (jsondata) => {
 			if (jsondata.code == 0) {
-				this.goddessList = this.goddessList.concat(jsondata.data);
+				this.goddessList = jsondata.data;
 
 				console.log(this.goddessList)
 				handle();
@@ -140,6 +142,14 @@ export default class ContestPage extends Page {
 	}
 	clearSelect(){
 		this.scoreToolElem.removeAttr('equal-index');
+	}
+	clearView(){
+		this.pictureImageElem.removeAttr('src')
+		this.infoNameElem.text( '' );
+		this.infoNameDetailElem.text( '' );
+		this.scoreIntElem.text( '0' );
+		this.scorePointElem.text( '0' );
+		this.rankNumElem.text( '100+' );
 	}
 	sendGoddessScore(score: number, handle){
 		var item = this.goddessList[this.goddessIndex];
