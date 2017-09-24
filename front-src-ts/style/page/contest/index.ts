@@ -36,10 +36,11 @@ export default class ContestPage extends Page {
 			beforeshow: () => {
 				this.clearView();
 				this.clearSelect();
+				this.goddessIndex = 0;
+				this.goddessList = [];
 				this.addGoddessItem(() => {
 					this.setGoddessView(0);
 				});
-				
 			},
 			Event: () => {
 				this.event();
@@ -89,9 +90,10 @@ export default class ContestPage extends Page {
 	}
 	addGoddessItem(handle = function() {} ){
 		var data = this.firstGoddessItem && { ssid: this.firstGoddessItem.ssid }
+		this.firstGoddessItem = '';
 		ServiceRequestGoddess(data, (jsondata) => {
 			if (jsondata.code == 0) {
-				this.goddessList = jsondata.data;
+				this.goddessList = this.goddessList.concat(jsondata.data);
 
 				console.log(this.goddessList)
 				handle();
@@ -124,7 +126,12 @@ export default class ContestPage extends Page {
 	}
 	setGoddessView(index){
 		let item = this.goddessList[index];
-		item = ScoreEscape(item);
+		try{
+			item = ScoreEscape(item);
+		}catch(e){
+			alert('你的女神走丢了...请稍后重试');
+			return;
+		}
 
 		this.pictureImageElem.setAttr('src', item.pic )
 		this.infoNameElem.text( item.name );
