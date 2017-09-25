@@ -15,6 +15,7 @@ import ContestPage from '../style/page/contest/index.ts';
 import uploadPage from '../style/page/upload/index.ts';
 import uploadUserPage from '../style/page/uploadUser/index.ts';
 
+let _window:any = window;
 export class APP {
 	DOMAPI: any = $('.app .app-wrapper');
 	page: any = {};
@@ -61,3 +62,4 @@ function GetQueryString(name: string): string {
 	var r = window.location.search.substr(1).match(reg); 
 	if (r!=null) return (r[2]); return null; 
 }
+_window.version_surennvshen = '1.1.1';

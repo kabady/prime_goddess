@@ -141,6 +141,20 @@ export default class ContestPage extends Page {
 		this.rankNumElem.text( item.rank );
 
 		this.goddessIndex = index;
+
+		this.preLoadImg();
+	}
+	preLoadImg(){
+		var item = this.goddessList[this.goddessIndex + 1];
+		try{
+			item = ScoreEscape(item);
+			// prevloading next img after 300ms;
+			setTimeout(() => {
+				$.render('<img src="'+item.pic+'" alt="" />');
+			}, 300);
+		}catch(e){
+			return;
+		}
 	}
 	scoreSelect(touches){
 		let selectNum = this.touchSelect.getSelect( touches.clientX )
